@@ -12,7 +12,7 @@ const Home = (props) => {
 
   return (
     <>
-      {toResultPage ? <Redirect push to={`/result?query=${searchQuery}`} /> : null}
+      {toResultPage ? <Redirect push to={`/result?search=${searchQuery}`} /> : null}
       <form onSubmit={submitHandler}>
         <input
           type="text"
