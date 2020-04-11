@@ -1,39 +1,27 @@
 import React, { useState } from 'react';
-import * as api from '../../api';
+import { Redirect } from "react-router-dom";
 
 const Home = (props) => {
-  const [items, setItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [toResultPage, setToResultPage] = useState(false);
 
-  const searchHandler = () => {
-    const preparedItems = [];
-
-    api
-      .search('samsung s10e')
-      .then(response => {
-        response.data.forEach(item => {
-          console.log(item);
-          preparedItems.push(
-            <li>
-              price: {item.price} <br />
-              openUrl: {item.openUrl} <br />
-              productDesc: {item.productDesc} <br />
-              productImg: {item.productImg} <br />
-              marketLogo: {item.marketLogo} <br />
-            </li>
-          )
-        })
-        setItems(preparedItems);
-      });
+  const submitHandler = event => {
+    event.preventDefault();
+    setToResultPage(true);
   }
 
   return (
     <>
-      <button onClick={searchHandler}>find phones</button>
-      <div>
-        <ul>
-          {items}
-        </ul>
-      </div>
+      {toResultPage ? <Redirect push to={`/result?query=${searchQuery}`} /> : null}
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          placeholder="Please, enter product name..."
+        />
+        <input type="submit" value="Search" />
+      </form>
     </>
   )
 }
