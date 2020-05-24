@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Box, makeStyles } from '@material-ui/core';
-import NavBar from '../../components/navbar/index';
-import ProductGrid from '../../components/product-grid/index';
-import ProductGridItem from '../../components/product-grid-item/index';
-import Loading from '../../components/loading/index';
+import NavBar from '../navbar/index';
+import ProductGrid from '../product-grid/index';
+import ProductGridItem from '../product-grid-item/index';
+import Loading from '../loading/index';
+import Camera from '../camera/index'
 import * as api from '../../api';
 
 const App = () => {
@@ -36,11 +37,11 @@ const App = () => {
   const prepareProduct = product => (
     <ProductGridItem
       price={product.price}
-      description={product.productDesc}
+      description={product.description}
       openUrl={product.openUrl}
-      productImage={product.productImg}
-      productName={searchString}
-      shopImage={product.marketLogo}
+      productImage={product.image}
+      productName={product.title}
+      shopImage={product.shopLogo}
     />
   )
 
