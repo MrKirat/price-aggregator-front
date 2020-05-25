@@ -5,6 +5,7 @@ import ProductGrid from '../product-grid/index';
 import ProductGridItem from '../product-grid-item/index';
 import Loading from '../loading/index';
 import Camera from '../camera/index'
+import { getBase64 } from '../../utils/FileUtils';
 import * as api from '../../api';
 
 const App = () => {
@@ -45,10 +46,12 @@ const App = () => {
     setIsCameraEnabled(false);
   }
 
-  // TODO: check api
+  // TODO: add api call
   const pickImageHandler = async event => {
     event.preventDefault();
-    const result = await api.analyze(event.target.files[0]);
+    const image = event.target.files[0];
+    console.log(image);
+    const result = await getBase64(image);
     console.log(result);
   }
 
