@@ -21,6 +21,7 @@ const ImagePicker = ({ pickHandler }) => {
         <ImageIcon className={css.icon} />
       </label>
       <input
+        accept=".jpg, .jpeg, .png"
         className={css.input}
         id='imagePicker'
         type="file"
