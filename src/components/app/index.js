@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Box, makeStyles } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import NavBar from '../navbar/index';
 import ProductGrid from '../product-grid/index';
 import ProductGridItem from '../product-grid-item/index';
@@ -11,6 +11,7 @@ const App = () => {
   const [searchString, setSearchString] = useState('');
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCameraEnabled, setIsCameraEnabled] = useState(false);
 
   const loadProducts = () => {
     setIsLoading(true);
@@ -34,6 +35,15 @@ const App = () => {
     setSearchString(event.target.value);
   }
 
+  const cameraToggleHandler = event => {
+    setIsCameraEnabled(!isCameraEnabled);
+  }
+
+  const captureHandler = imageSrc => {
+    console.log(imageSrc);
+    setIsCameraEnabled(false);
+  }
+
   const prepareProduct = product => (
     <ProductGridItem
       price={product.price}
@@ -52,12 +62,14 @@ const App = () => {
           searchString={searchString}
           submitSearchHandler={submitSearchHandler}
           changeSearchHandler={changeSearchHandler}
+          cameraToggleHandler={cameraToggleHandler}
         />
       </Box>
       {isLoading
         ? <Loading />
         : <ProductGrid> {products.map(prepareProduct)} </ProductGrid>
       }
+      {isCameraEnabled ? <Camera captureHandler={captureHandler} /> : null}
     </Container>
   );
 };

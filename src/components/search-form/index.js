@@ -3,15 +3,14 @@ import { Box, TextField, Button, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    // margin: theme.spacing(1),
+  container: {
+    display: 'inline-block',
   },
   textField: {
     marginRight: '10px',
   },
   input: {
     backgroundColor: 'white'
-    // color: 'white'
   }
 }));
 
@@ -19,7 +18,7 @@ const SearchForm = ({ searchString, submitHandler, changeHandler }) => {
   const css = useStyles();
 
   return (
-    <Box>
+    <Box className={css.container}>
       <form onSubmit={submitHandler}>
         <TextField
           className={css.textField}

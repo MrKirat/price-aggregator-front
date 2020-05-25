@@ -1,9 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core'
+import { Box, makeStyles } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import SearchForm from '../search-form/index';
+import CameraToggle from '../camera-toggle/index';
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavBar = ({ searchString, submitSearchHandler, changeSearchHandler }) => {
+const NavBar = ({ searchString, submitSearchHandler, changeSearchHandler, cameraToggleHandler }) => {
   const css = useStyles();
 
   return (
@@ -26,11 +27,14 @@ const NavBar = ({ searchString, submitSearchHandler, changeSearchHandler }) => {
           <Typography className={css.title} variant="h1" color="inherit">
             Price Aggregator
           </Typography>
-          <SearchForm
-            searchString={searchString}
-            submitHandler={submitSearchHandler}
-            changeHandler={changeSearchHandler}
-          />
+          <Box>
+            <CameraToggle clickHandler={cameraToggleHandler}/>
+            <SearchForm
+              searchString={searchString}
+              submitHandler={submitSearchHandler}
+              changeHandler={changeSearchHandler}
+            />
+          </Box>
         </Toolbar>
       </AppBar>
     </div>
