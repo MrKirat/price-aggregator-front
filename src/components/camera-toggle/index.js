@@ -5,7 +5,7 @@ import PhotoCameraOutlinedIcon from '@material-ui/icons/PhotoCameraOutlined';
 const useStyles = makeStyles(theme => ({
   icon: {
     verticalAlign: 'middle',
-    marginRight: 5,
+    marginRight: 10,
   },
 }));
 
@@ -13,7 +13,7 @@ const CameraToggle = ({ clickHandler }) => {
   const css = useStyles();
 
   return (
-    <PhotoCameraOutlinedIcon className={css.icon} onClick={clickHandler}/>
+    <PhotoCameraOutlinedIcon className={css.icon} onClick={clickHandler} />
   )
 }
 

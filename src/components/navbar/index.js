@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import SearchForm from '../search-form/index';
 import CameraToggle from '../camera-toggle/index';
+import ImagePicker from '../image-picker/index';
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
@@ -17,7 +18,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavBar = ({ searchString, submitSearchHandler, changeSearchHandler, cameraToggleHandler }) => {
+const NavBar = ({
+  searchString,
+  submitSearchHandler,
+  changeSearchHandler,
+  cameraToggleHandler,
+  pickImageHandler
+}) => {
   const css = useStyles();
 
   return (
@@ -28,7 +35,8 @@ const NavBar = ({ searchString, submitSearchHandler, changeSearchHandler, camera
             Price Aggregator
           </Typography>
           <Box>
-            <CameraToggle clickHandler={cameraToggleHandler}/>
+            <ImagePicker pickHandler={pickImageHandler} />
+            <CameraToggle clickHandler={cameraToggleHandler} />
             <SearchForm
               searchString={searchString}
               submitHandler={submitSearchHandler}

@@ -39,9 +39,17 @@ const App = () => {
     setIsCameraEnabled(!isCameraEnabled);
   }
 
+  // TODO: add api call
   const captureHandler = imageSrc => {
     console.log(imageSrc);
     setIsCameraEnabled(false);
+  }
+
+  // TODO: check api
+  const pickImageHandler = async event => {
+    event.preventDefault();
+    const result = await api.analyze(event.target.files[0]);
+    console.log(result);
   }
 
   const prepareProduct = product => (
@@ -63,6 +71,7 @@ const App = () => {
           submitSearchHandler={submitSearchHandler}
           changeSearchHandler={changeSearchHandler}
           cameraToggleHandler={cameraToggleHandler}
+          pickImageHandler={pickImageHandler}
         />
       </Box>
       {isLoading
