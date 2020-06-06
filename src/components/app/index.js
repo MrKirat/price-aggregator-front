@@ -17,7 +17,7 @@ const App = () => {
   const loadProducts = () => {
     setIsLoading(true);
     api
-      .search(searchString)
+      .searchByString(searchString)
       .then(response => {
         console.log(response.data);
         setProducts(response.data);
@@ -42,21 +42,38 @@ const App = () => {
 
   // TODO: add api call
   const captureHandler = imageSrc => {
-    console.log(imageSrc);
+    setIsLoading(true);
     setIsCameraEnabled(false);
+
+    api
+      .searchByImage(imageSrc)
+      .then(response => {
+        setProducts(response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
-  // TODO: add api call
   const pickImageHandler = async event => {
     event.preventDefault();
+    setIsLoading(true);
     const image = event.target.files[0];
-    console.log(image);
-    const result = await getBase64(image);
-    console.log(result);
+    const imageSrc = await getBase64(image);
+
+    api
+      .searchByImage(imageSrc)
+      .then(response => {
+        setProducts(response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   const prepareProduct = product => (
     <ProductGridItem
+      key={product.openUrl}
       price={product.price}
       description={product.description}
       openUrl={product.openUrl}

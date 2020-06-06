@@ -22,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     textAlign: "left",
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   divider: {
-    margin: `${theme.spacing.unit * 3}px 0`
+    margin: `${theme.spacing(3)}px 0`
   },
   description: {
     lineHeight: 1.8

@@ -2,6 +2,7 @@ import React, { useRef, useCallback } from 'react'
 import Webcam from "react-webcam";
 import { makeStyles } from '@material-ui/core'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+import { removeBase64Prefix } from '../../utils/FileUtils';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -34,7 +35,7 @@ const Camera = ({ captureHandler }) => {
   const capture = useCallback(
     () => {
       const imageSrc = webcamRef.current.getScreenshot();
-      captureHandler(imageSrc);
+      captureHandler(removeBase64Prefix(imageSrc));
     },
     [webcamRef]
   );
