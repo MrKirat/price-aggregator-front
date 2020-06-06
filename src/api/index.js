@@ -13,4 +13,10 @@ const searchByImage = async base64Image => {
   return result;
 }
 
-export { searchByString, searchByImage };
+const searchByAudio = async base64Audio => {
+  const result = await axios.post(`${API_BASE_URL}/search`, { base64Audio: base64Audio })
+  console.log(result);
+  return result;
+}
+
+export { searchByString, searchByImage, searchByAudio };

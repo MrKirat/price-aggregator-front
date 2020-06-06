@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import SearchForm from '../search-form/index';
 import CameraToggle from '../camera-toggle/index';
 import ImagePicker from '../image-picker/index';
+import AudioRecorderIcon from '../audio-recorder-icon/index';
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
@@ -23,7 +24,9 @@ const NavBar = ({
   submitSearchHandler,
   changeSearchHandler,
   cameraToggleHandler,
-  pickImageHandler
+  pickImageHandler,
+  audioRecorderClickHandler,
+  isAudioRecorderActive
 }) => {
   const css = useStyles();
 
@@ -35,6 +38,7 @@ const NavBar = ({
             Price Aggregator
           </Typography>
           <Box>
+            <AudioRecorderIcon clickHandler={audioRecorderClickHandler} isActive={isAudioRecorderActive} />
             <ImagePicker pickHandler={pickImageHandler} />
             <CameraToggle clickHandler={cameraToggleHandler} />
             <SearchForm

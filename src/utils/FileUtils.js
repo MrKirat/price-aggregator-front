@@ -1,5 +1,12 @@
-const removeBase64Prefix = base64Image => {
-  return base64Image.substr(base64Image.indexOf(',') + 1);
+const createFileByBlobAndBuffer = (blob, buffer) => {
+  return new File(buffer, 'search.mp3', {
+    type: blob.type,
+    lastModified: Date.now()
+  });
+}
+
+const removeBase64Prefix = base64File => {
+  return base64File.substr(base64File.indexOf(',') + 1);
 }
 
 const getBase64 = file => {
@@ -10,10 +17,10 @@ const getBase64 = file => {
       reject(error);
     };
     reader.onload = function () {
-      const imageSrc = reader.result
-      resolve(removeBase64Prefix(imageSrc));
+      const fileSrc = reader.result
+      resolve(removeBase64Prefix(fileSrc));
     };
   });
 }
 
-export { getBase64, removeBase64Prefix };
+export { getBase64, removeBase64Prefix, createFileByBlobAndBuffer };

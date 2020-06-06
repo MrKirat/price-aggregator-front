@@ -5,14 +5,17 @@ import ProductGrid from '../product-grid/index';
 import ProductGridItem from '../product-grid-item/index';
 import Loading from '../loading/index';
 import Camera from '../camera/index'
-import { getBase64 } from '../../utils/FileUtils';
+import { getBase64, createFileByBlobAndBuffer } from '../../utils/FileUtils';
 import * as api from '../../api';
+import MicRecorder from 'mic-recorder-to-mp3';
+const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 const App = () => {
   const [searchString, setSearchString] = useState('');
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isCameraEnabled, setIsCameraEnabled] = useState(false);
+  const [isAudioRecorderActive, setIsAudioRecorderActive] = useState(false);
 
   const loadProducts = () => {
     setIsLoading(true);
@@ -33,15 +36,17 @@ const App = () => {
   }
 
   const changeSearchHandler = event => {
+    audioRecorderAbort();
     setSearchString(event.target.value);
   }
 
   const cameraToggleHandler = event => {
+    if(!isCameraEnabled) audioRecorderAbort();
     setIsCameraEnabled(!isCameraEnabled);
   }
 
-  // TODO: add api call
   const captureHandler = imageSrc => {
+    audioRecorderAbort();
     setIsLoading(true);
     setIsCameraEnabled(false);
 
@@ -57,6 +62,7 @@ const App = () => {
 
   const pickImageHandler = async event => {
     event.preventDefault();
+    audioRecorderAbort();
     setIsLoading(true);
     const image = event.target.files[0];
     const imageSrc = await getBase64(image);
@@ -69,6 +75,43 @@ const App = () => {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  const audioRecorderAbort = () => {
+    setIsAudioRecorderActive(false);
+    Mp3Recorder.stop();
+  }
+  
+  const audioRecorderStart = () => {
+    setIsAudioRecorderActive(true);
+    setIsCameraEnabled(false);
+    Mp3Recorder.start();
+  }
+
+  const audioRecorderStop = async () => {
+    setIsLoading(true);
+    setIsAudioRecorderActive(false);
+    const [buffer, blob] = await Mp3Recorder.stop().getMp3();
+    const file = createFileByBlobAndBuffer(blob, buffer);
+    const audioSrc = await getBase64(file);
+
+    api
+      .searchByAudio(audioSrc)
+      .then(response => {
+        setProducts(response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  const audioRecorderClickHandler = () => {
+    setIsCameraEnabled(false);
+    if (isAudioRecorderActive) {
+      audioRecorderStop();
+    } else {
+      audioRecorderStart();
+    }
   }
 
   const prepareProduct = product => (
@@ -92,6 +135,8 @@ const App = () => {
           changeSearchHandler={changeSearchHandler}
           cameraToggleHandler={cameraToggleHandler}
           pickImageHandler={pickImageHandler}
+          audioRecorderClickHandler={audioRecorderClickHandler}
+          isAudioRecorderActive={isAudioRecorderActive}
         />
       </Box>
       {isLoading
