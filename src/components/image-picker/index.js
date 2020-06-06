@@ -17,7 +17,7 @@ const ImagePicker = ({ pickHandler }) => {
 
   return (
     <>
-      <label for="imagePicker" className={css.label}>
+      <label htmlFor="imagePicker" className={css.label}>
         <ImageIcon className={css.icon} />
       </label>
       <input

@@ -127,7 +127,7 @@ const App = () => {
   )
 
   return (
-    <Container disableGutters maxWidth="false">
+    <Container disableGutters maxWidth={false}>
       <Box>
         <NavBar
           searchString={searchString}
