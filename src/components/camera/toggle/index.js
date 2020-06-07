@@ -18,7 +18,6 @@ const CameraToggle = () => {
   const [isCameraEnabled, setIsCameraEnabled] = useRecoilState(isCameraEnabledState);
 
   const clickHandler = event => {
-    // if (!isCameraEnabled) audioRecorderAbort();
     setIsCameraEnabled(!isCameraEnabled);
   }
 

@@ -1,4 +1,3 @@
-// TDO: rename this component
 import React from 'react';
 
 import MicRecorder from 'mic-recorder-to-mp3';
@@ -35,12 +34,6 @@ const AudioRecorder = () => {
   const setProductList = useSetRecoilState(productListState);
   const setIsLoading = useSetRecoilState(isLoadingState);
   const Icon = isRecording ? PauseIcon : MicIcon;
-
-  // TODO: export this function
-  const audioRecorderAbort = () => {
-    setIsRecording(false);
-    Mp3Recorder.stop();
-  }
 
   const audioRecorderStart = () => {
     setIsRecording(true);

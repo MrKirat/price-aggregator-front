@@ -45,7 +45,6 @@ const SearchForm = () => {
   }
 
   const changeHandler = ({ target: { value } }) => {
-    // audioRecorderAbort();
     setSearchString(value);
   }
 

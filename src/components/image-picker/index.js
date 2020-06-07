@@ -28,7 +28,6 @@ const ImagePicker = () => {
 
   const pickHandler = async event => {
     event.preventDefault();
-    // audioRecorderAbort();
     setIsLoading(true);
     const image = event.target.files[0];
     const imageSrc = await getBase64(image);

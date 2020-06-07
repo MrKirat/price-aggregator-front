@@ -47,7 +47,6 @@ const Camera = () => {
     () => {
       const base64Image = webcamRef.current.getScreenshot();
       const imageSrc = removeBase64Prefix(base64Image);
-      // audioRecorderAbort();
       setIsLoading(true);
       setIsCameraEnabled(false);
 
