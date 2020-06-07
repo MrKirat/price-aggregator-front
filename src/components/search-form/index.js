@@ -5,7 +5,7 @@ import {
   productListState,
   isLoadingState,
   searchStringState
-} from '../../recoil/index';
+} from '../../recoil';
 
 import { Box, TextField, Button, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core'
 import ImageIcon from '@material-ui/icons/Image';
 
 import { useSetRecoilState } from 'recoil';
-import { productListState, isLoadingState } from '../../recoil/index';
+import { productListState, isLoadingState } from '../../recoil';
 
 import * as api from '../../api';
 

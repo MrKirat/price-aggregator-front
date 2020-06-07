@@ -9,13 +9,13 @@ import {
   isCameraEnabledState,
   productListState,
   isLoadingState
-} from '../../recoil/index';
+} from '../../recoil';
 
 import { makeStyles } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import PauseIcon from '@material-ui/icons/Pause';
 
-import * as api from '../../api/index';
+import * as api from '../../api';
 
 import { getBase64, createFileByBlobAndBuffer } from '../../utils/file-utils';
 

@@ -9,13 +9,11 @@ const searchByString = async searchString => {
 
 const searchByImage = async base64Image => {
   const result = await axios.post(`${API_BASE_URL}/search`, { base64Image: base64Image })
-  console.log(result);
   return result;
 }
 
 const searchByAudio = async base64Audio => {
   const result = await axios.post(`${API_BASE_URL}/search`, { base64Audio: base64Audio })
-  console.log(result);
   return result;
 }
 

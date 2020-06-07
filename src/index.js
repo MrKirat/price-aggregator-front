@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import App from './components/app/index';
+
 import { RecoilRoot } from 'recoil';
-import theme from './theme';
+
 import { ThemeProvider } from '@material-ui/core';
+import theme from './theme';
+
+import * as serviceWorker from './serviceWorker';
+
+import App from './components/app';
 
 ReactDOM.render(
   <React.StrictMode>

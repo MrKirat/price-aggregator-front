@@ -3,7 +3,7 @@ import React, { useRef, useCallback } from 'react'
 import Webcam from "react-webcam";
 
 import { useSetRecoilState } from 'recoil';
-import { isCameraEnabledState, productListState, isLoadingState } from '../../recoil/index';
+import { isCameraEnabledState, productListState, isLoadingState } from '../../recoil';
 
 import { makeStyles } from '@material-ui/core'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';

@@ -1,3 +1,2 @@
-To start project run the following command:
-- Windows (PowerShell)
-`($env:HTTPS = "true") -and (npm start)`
+To start dev server in via https run the following command:
+`npm run sslstart`

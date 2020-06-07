@@ -1,11 +1,14 @@
 import React from 'react';
-import { Container, Box } from '@material-ui/core';
+
 import { useRecoilValue } from 'recoil';
-import { isLoadingState, isCameraEnabledState } from '../../recoil/index';
-import NavBar from '../navbar/index';
-import ProductGrid from '../product/grid/index';
-import Loading from '../loading/index';
-import Camera from '../camera/index'
+import { isLoadingState, isCameraEnabledState } from '../../recoil';
+
+import { Container, Box } from '@material-ui/core';
+
+import NavBar from '../navbar';
+import ProductGrid from '../product/grid';
+import Loading from '../loading';
+import Camera from '../camera'
 
 const App = () => {
   const isLoading = useRecoilValue(isLoadingState);

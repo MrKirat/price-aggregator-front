@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRecoilState } from 'recoil';
-import { isCameraEnabledState } from '../../../recoil/index';
+import { isCameraEnabledState } from '../../../recoil';
 
 import { makeStyles } from '@material-ui/core'
 import PhotoCameraOutlinedIcon from '@material-ui/icons/PhotoCameraOutlined';

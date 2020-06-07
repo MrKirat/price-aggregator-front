@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Box, Grid } from '@material-ui/core';
 import { useRecoilValue } from 'recoil';
-import { productListState } from '../../../recoil/index';
-import ProductCard from '../card/index';
+import { productListState } from '../../../recoil';
+import ProductCard from '../card';
 
 const prepareProduct = product => (
   <ProductCard

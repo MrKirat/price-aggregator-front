@@ -5,10 +5,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import SearchForm from '../search-form/index';
-import CameraToggle from '../camera/toggle/index';
-import ImagePicker from '../image-picker/index';
-import AudioRecorder from '../audio-recorder/index';
+import SearchForm from '../search-form';
+import CameraToggle from '../camera/toggle';
+import ImagePicker from '../image-picker';
+import AudioRecorder from '../audio-recorder';
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
