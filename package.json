@@ -14,7 +14,8 @@
     "react-dom": "^16.13.1",
     "react-loading": "^2.0.3",
     "react-scripts": "3.4.1",
-    "react-webcam": "^5.0.2"
+    "react-webcam": "^5.0.2",
+    "recoil": "0.0.8"
   },
   "scripts": {
     "start": "react-scripts start",

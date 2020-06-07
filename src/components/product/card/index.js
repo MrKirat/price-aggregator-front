@@ -3,6 +3,7 @@ import {
   Grid, Card, CardMedia, CardContent, CardActionArea,
   Divider, Typography, makeStyles
 } from '@material-ui/core';
+import { openInNewTab } from '../../../utils/link-utils'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -36,11 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const openInNewTab = url => {
-  window.open(url, "_blank")
-}
-
-const ProductGridItem = ({ price, description, openUrl, productImage, productName, shopImage }) => {
+const ProductCard = ({ price, description, openUrl, productImage, productName, shopImage }) => {
   const css = useStyles();
 
   return (
@@ -71,4 +68,4 @@ const ProductGridItem = ({ price, description, openUrl, productImage, productNam
   )
 }
 
-export default ProductGridItem;
+export default ProductCard;

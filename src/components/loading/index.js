@@ -1,6 +1,9 @@
 import React from 'react'
-import { Container, makeStyles } from '@material-ui/core'
+
 import ReactLoading from 'react-loading';
+
+import { Container, makeStyles } from '@material-ui/core'
+
 import theme from '../../theme';
 
 const useStyles = makeStyles(theme => ({

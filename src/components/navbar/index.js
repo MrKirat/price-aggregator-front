@@ -1,12 +1,14 @@
 import React from 'react'
+
 import { Box, makeStyles } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+
 import SearchForm from '../search-form/index';
-import CameraToggle from '../camera-toggle/index';
+import CameraToggle from '../camera/toggle/index';
 import ImagePicker from '../image-picker/index';
-import AudioRecorderIcon from '../audio-recorder-icon/index';
+import AudioRecorder from '../audio-recorder/index';
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
@@ -19,15 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavBar = ({
-  searchString,
-  submitSearchHandler,
-  changeSearchHandler,
-  cameraToggleHandler,
-  pickImageHandler,
-  audioRecorderClickHandler,
-  isAudioRecorderActive
-}) => {
+const NavBar = () => {
   const css = useStyles();
 
   return (
@@ -38,14 +32,10 @@ const NavBar = ({
             Price Aggregator
           </Typography>
           <Box>
-            <AudioRecorderIcon clickHandler={audioRecorderClickHandler} isActive={isAudioRecorderActive} />
-            <ImagePicker pickHandler={pickImageHandler} />
-            <CameraToggle clickHandler={cameraToggleHandler} />
-            <SearchForm
-              searchString={searchString}
-              submitHandler={submitSearchHandler}
-              changeHandler={changeSearchHandler}
-            />
+            <AudioRecorder />
+            <ImagePicker />
+            <CameraToggle />
+            <SearchForm />
           </Box>
         </Toolbar>
       </AppBar>
