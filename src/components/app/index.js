@@ -6,7 +6,7 @@ import { isLoadingState, isCameraEnabledState } from '../../recoil';
 import { Container, Box } from '@material-ui/core';
 
 import NavBar from '../navbar';
-import ProductGrid from '../product/grid';
+import Result from '../result';
 import Loading from '../loading';
 import Camera from '../camera'
 
@@ -21,7 +21,7 @@ const App = () => {
       </Box>
       {isLoading
         ? <Loading />
-        : <ProductGrid />}
+        : <Result />}
       {isCameraEnabled
         ? <Camera />
         : null}
