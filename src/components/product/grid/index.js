@@ -12,7 +12,7 @@ const prepareProduct = product => (
     openUrl={product.openUrl}
     productImage={product.image}
     productName={product.title}
-    shopImage={product.shopLogo}
+    shopLogo={product.shopLogo}
   />
 )
 
