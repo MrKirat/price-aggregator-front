@@ -6,33 +6,39 @@ import ProductCard from "./index";
 
 let container = null;
 beforeEach(() => {
-  // подготавливаем DOM-элемент, куда будем рендерить
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // подчищаем после завершения
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("renders with all props", () => {
+const TestProduct = () => {
+  return <ProductCard
+    price={'10 000'}
+    description={'description'}
+    openUrl={'open-url'}
+    productImage={'product-image-url'}
+    productName={'title'}
+    shopLogo={'shop-logo-url'}
+  />
+}
+
+it("renders with correct description", () => {
   act(() => {
-    render(
-      <ProductCard
-        price={'10 000'}
-        description={'description'}
-        openUrl={'open-url'}
-        productImage={'product-image-url'}
-        productName={'title'}
-        shopLogo={'shop-logo-url'}
-      />,
-      container
-    );
+    render(<TestProduct />, container);
   });
 
   expect(container).toHaveTextContent('description');
+});
+
+it("renders with correct price", () => {
+  act(() => {
+    render(<TestProduct />, container);
+  });
+
   expect(container).toHaveTextContent('10 000');
 });

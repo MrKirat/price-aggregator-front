@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<RecoilRoot>
+  <Batcher
+    setNotifyBatcherOfChange={[Function]}
+  />
+  <Result>
+    <WaitingMessage>
+      <p
+        className="makeStyles-paragraph-1"
+      >
+         Waiting for your input. 
+      </p>
+    </WaitingMessage>
+  </Result>
+</RecoilRoot>
+`;
